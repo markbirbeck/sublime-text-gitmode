@@ -542,5 +542,123 @@
       "match_all": true,
       "operand": "text.gitmode.status"
     }]
+  },
+
+
+  /**
+   * R E V I S I O N S
+   * =================
+   */
+
+  /**
+   * Pressing '=' shows a diff against HEAD:
+   */
+
+  {
+    "keys": ["="],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "diff",
+      "syntax": "Diff"
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "string.text.gitmode.revision"
+    }]
+  },
+
+  /**
+   * Pressing [ENTER] shows a patch in a new buffer:
+   */
+
+  {
+    "keys": ["enter"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "show --patch",
+      "syntax": "Diff"
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "string.text.gitmode.revision"
+    }]
+  },
+
+  /**
+   * 'a' applies the revision to the working tree, and 'A' applies and commits
+   * it:
+   */
+
+  {
+    "keys": ["a"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "cherry-pick --no-commit",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "string.text.gitmode.revision"
+    }]
+  },
+
+  {
+    "keys": ["A"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "cherry-pick",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "string.text.gitmode.revision"
+    }]
+  },
+
+  /**
+   * 'x' does a soft reset to a particular revision:
+   */
+
+  {
+    "keys": ["x"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "reset --soft",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "string.text.gitmode.revision"
+    }]
+  },
+
+
+  /**
+   * 'X' does a hard reset to a particular revision:
+   */
+
+  {
+    "keys": ["X"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "reset --hard",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "string.text.gitmode.revision"
+    }]
   }
 ]
