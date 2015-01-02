@@ -11,3 +11,8 @@ The [Git](https://packagecontrol.io/packages/Git) plugin is great, but:
 * the `Git` plugin uses slightly different terminology to Git itself, which seems unnecessary.
 
 The [SublimeGit](https://packagecontrol.io/packages/SublimeGit) plugin is also nice, but it costs money and is not open source.
+
+## How to use GitMode
+The main point of interaction for `GitMode` is a generated buffer that contains the status of a Git repo. This buffer can be created by running the `GitMode: status` command in a project that contains a Git repo. The buffer will look something like this:
+
+![Screenshot of the GitMode status command](https://www.evernote.com/shard/s21/sh/092a14bd-da06-4649-943e-9b54add6917f/b68858b2d9da3a4983e6da08237231cb/deep/0/*GitMode-status*---shell-command.png)
