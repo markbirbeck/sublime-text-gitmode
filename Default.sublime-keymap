@@ -204,5 +204,84 @@
       "match_all": true,
       "operand": "text.gitmode.status"
     }]
+  },
+
+  /**
+   * Stash
+   */
+
+  {
+    "keys": ["z", "z"],
+    "command": "gitmode",
+    "args": {
+      "command": "stash save",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
+
+  {
+    "keys": ["z", "-", "k", "z"],
+    "command": "gitmode",
+    "args": {
+      "command": "stash save --keep-index",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
+
+  {
+    "keys": ["Z"],
+    "command": "gitmode",
+    "args": {
+      "command": "stash save --keep-index",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
+
+  {
+    "keys": ["z", "s"],
+    "command": "gitmode",
+    "args": {
+      "command": "stash save Snapshot taken at `date`",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
+
+  {
+    "keys": ["z", "u"],
+    "command": "gitmode",
+    "args": {
+      "command": "git stash show -p stash@{0} | git apply -R",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
   }
 ]
