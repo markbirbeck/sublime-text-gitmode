@@ -412,5 +412,135 @@
       "match_all": true,
       "operand": "entity.text.gitmode.status.file.staged"
     }]
+  },
+
+  /**
+   * B R A N C H E S
+   * ===============
+   */
+
+  /**
+   * `b b` checks out the branch:
+   */
+
+  {
+    "keys": ["b", "b"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "checkout",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "string.text.gitmode.branch.local"
+    }]
+  },
+
+  {
+    "keys": ["b", "b"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "checkout",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "support.text.gitmode.branch.remote"
+    }]
+  },
+
+  /**
+   * `b c` creates a new branch:
+   */
+
+  {
+    "keys": ["b", "c"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "checkout -b ${branch::Branch name}",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
+
+  /**
+   * `b d` deletes the branch:
+   */
+
+  {
+    "keys": ["b", "d"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "branch -d",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "string.text.gitmode.branch.local"
+    }]
+  },
+
+  {
+    "keys": ["b", "D"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "branch -D",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "string.text.gitmode.branch.local"
+    }]
+  },
+
+  /**
+   * `b M` merges a branch:
+   */
+
+  {
+    "keys": ["b", "M"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "merge --no-ff",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "string.text.gitmode.branch.local"
+    }]
+  },
+
+  /**
+   * 'F' create a new feature branch:
+   */
+
+  {
+    "keys": ["!", "f"],
+    "command": "gitmode",
+    "args": {
+      "command": "checkout -b feature/${branch::Feature Branch} develop",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
   }
 ]
