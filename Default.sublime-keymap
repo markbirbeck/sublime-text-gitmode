@@ -660,5 +660,107 @@
       "match_all": true,
       "operand": "string.text.gitmode.revision"
     }]
+  },
+
+  /**
+   * S T A S H E S
+   * =============
+   */
+
+  /**
+   * Pressing [ENTER] shows a patch of the stash in a new buffer:
+   */
+
+  {
+    "keys": ["enter"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "stash show --patch",
+      "syntax": "Diff"
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "string.text.gitmode.stash"
+    }]
+  },
+
+  /**
+   * 'a' applies the stash, 'A' pops it and 'k' drops it:
+   */
+
+  {
+    "keys": ["a"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "stash apply",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "string.text.gitmode.stash"
+    }]
+  },
+
+  {
+    "keys": ["A"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "stash pop",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "string.text.gitmode.stash"
+    }]
+  },
+  {
+    "keys": ["ctrl+u", "a"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "stash apply --index",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "string.text.gitmode.stash"
+    }]
+  },
+
+  {
+    "keys": ["ctrl+u", "A"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "stash pop --index",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "string.text.gitmode.stash"
+    }]
+  },
+
+  {
+    "keys": ["k"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "stash drop",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "string.text.gitmode.stash"
+    }]
   }
 ]
