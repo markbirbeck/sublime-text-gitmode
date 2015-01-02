@@ -283,5 +283,134 @@
       "match_all": true,
       "operand": "text.gitmode.status"
     }]
+  },
+
+  /**
+   * F I L E S
+   * =========
+   */
+
+  /**
+   * Untracked files:
+   */
+
+  {
+    "keys": ["s"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "rm",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "entity.text.gitmode.status.file.unstaged.deleted"
+    }]
+  },
+
+  {
+    "keys": ["s"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "add --all",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "entity.text.gitmode.status.file.untracked"
+    }]
+  },
+
+  /**
+   * Unstaged files:
+   *
+   * 'd' to diff
+   * 'k' to abandon changes
+   * 's' to stage
+   */
+
+  {
+    "keys": ["d"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "diff",
+      "syntax": "Diff"
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "entity.text.gitmode.status.file.unstaged"
+    }]
+  },
+
+  {
+    "keys": ["k"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "checkout --",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "entity.text.gitmode.status.file.unstaged"
+    }]
+  },
+
+  {
+    "keys": ["s"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "add --all",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "entity.text.gitmode.status.file.unstaged"
+    }]
+  },
+
+  /**
+   * Staged files:
+   *
+   * 'd' to diff
+   * 'u' to unstage
+   */
+
+  {
+    "keys": ["d"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "diff --cached",
+      "syntax": "Diff"
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "entity.text.gitmode.status.file.staged"
+    }]
+  },
+
+  {
+    "keys": ["u"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "reset HEAD",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "entity.text.gitmode.status.file.staged"
+    }]
   }
 ]

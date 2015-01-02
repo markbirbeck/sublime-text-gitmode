@@ -38,6 +38,25 @@ class GitmodeCommand(ShellCommandCommand):
         return OsShell.process(command).rstrip('\n')
 
 
+class GitmodeOnRegionCommand(GitmodeCommand):
+
+    def run(self, edit, command=None, command_prefix=None, prompt=None, panel=None, title=None, syntax=None, refresh=None):
+
+        GitmodeCommand.run(
+            self,
+            edit,
+            command=command,
+            command_prefix=command_prefix,
+            prompt=prompt,
+            region=True,
+            arg_required=True,
+            panel=panel,
+            title=title,
+            syntax=syntax,
+            refresh=refresh
+        )
+
+
 class GitmodeStatusCommand(GitmodeCommand):
 
     def run(self, edit, title=None):
