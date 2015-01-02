@@ -1,0 +1,766 @@
+[
+
+  /**
+   * G E N E R A L
+   * =============
+   */
+
+  /**
+   * ':' allows any Git command to be entered:
+   */
+
+  {
+    "keys": [":"],
+    "command": "gitmode",
+    "args": {
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
+
+  /**
+   * History
+   */
+
+  {
+    "keys": ["l", "l"],
+    "command": "gitmode",
+    "args": {
+      "command": "log --max-count=100 --graph --decorate --pretty=oneline --abbrev-commit",
+      "title": "*magit-log*",
+      "syntax": "GitModeGraph"
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
+
+  {
+    "keys": ["l", "L"],
+    "command": "gitmode",
+    "args": {
+      "command": "log --max-count=100 --graph --decorate --pretty=oneline --abbrev-commit --all",
+      "title": "*magit-log*",
+      "syntax": "GitModeGraph"
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
+
+  /**
+   * Fetch
+   */
+
+  {
+    "keys": ["f", "f"],
+    "command": "gitmode",
+    "args": {
+      "command": "fetch",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
+
+  {
+    "keys": ["f", "o"],
+    "command": "gitmode",
+    "args": {
+      "command": "fetch ${branch::Branch to fetch}",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
+
+  /**
+   * Pull
+   */
+
+  {
+    "keys": ["F", "F"],
+    "command": "gitmode",
+    "args": {
+      "command": "pull",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
+
+  /**
+   * Push
+   */
+
+  {
+    "keys": ["P", "P"],
+    "command": "gitmode",
+    "args": {
+      "command": "push",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
+
+  {
+    "keys": ["P", "t"],
+    "command": "gitmode",
+    "args": {
+      "command": "push --tags",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
+
+  {
+    "keys": ["ctrl+u", "P", "P"],
+    "command": "gitmode",
+    "args": {
+      "command": "push ${repo::Repository to push to}",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
+
+  {
+    "keys": ["ctrl+u", "P", "t"],
+    "command": "gitmode",
+    "args": {
+      "command": "push --tags ${repo::Repository to push to}",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
+
+  {
+    "keys": ["ctrl+u", "ctrl+u", "P", "P"],
+    "command": "gitmode",
+    "args": {
+      "command": "push ${repo::Repository to push to} ${branch::Branch to push}",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
+
+  {
+    "keys": ["ctrl+u", "ctrl+u", "P", "t"],
+    "command": "gitmode",
+    "args": {
+      "command": "push --tags ${repo::Repository to push to} ${branch::Branch to push}",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
+
+  /**
+   * Stash
+   */
+
+  {
+    "keys": ["z", "z"],
+    "command": "gitmode",
+    "args": {
+      "command": "stash save",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
+
+  {
+    "keys": ["z", "-", "k", "z"],
+    "command": "gitmode",
+    "args": {
+      "command": "stash save --keep-index",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
+
+  {
+    "keys": ["Z"],
+    "command": "gitmode",
+    "args": {
+      "command": "stash save --keep-index",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
+
+  {
+    "keys": ["z", "s"],
+    "command": "gitmode",
+    "args": {
+      "command": "stash save Snapshot taken at `date`",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
+
+  {
+    "keys": ["z", "u"],
+    "command": "gitmode",
+    "args": {
+      "command": "git stash show -p stash@{0} | git apply -R",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
+
+  /**
+   * F I L E S
+   * =========
+   */
+
+  /**
+   * Untracked files:
+   */
+
+  {
+    "keys": ["s"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "rm",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "entity.text.gitmode.status.file.unstaged.deleted"
+    }]
+  },
+
+  {
+    "keys": ["s"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "add --all",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "entity.text.gitmode.status.file.untracked"
+    }]
+  },
+
+  /**
+   * Unstaged files:
+   *
+   * 'd' to diff
+   * 'k' to abandon changes
+   * 's' to stage
+   */
+
+  {
+    "keys": ["d"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "diff",
+      "syntax": "Diff"
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "entity.text.gitmode.status.file.unstaged"
+    }]
+  },
+
+  {
+    "keys": ["k"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "checkout --",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "entity.text.gitmode.status.file.unstaged"
+    }]
+  },
+
+  {
+    "keys": ["s"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "add --all",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "entity.text.gitmode.status.file.unstaged"
+    }]
+  },
+
+  /**
+   * Staged files:
+   *
+   * 'd' to diff
+   * 'u' to unstage
+   */
+
+  {
+    "keys": ["d"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "diff --cached",
+      "syntax": "Diff"
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "entity.text.gitmode.status.file.staged"
+    }]
+  },
+
+  {
+    "keys": ["u"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "reset HEAD",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "entity.text.gitmode.status.file.staged"
+    }]
+  },
+
+  /**
+   * B R A N C H E S
+   * ===============
+   */
+
+  /**
+   * `b b` checks out the branch:
+   */
+
+  {
+    "keys": ["b", "b"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "checkout",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "string.text.gitmode.branch.local"
+    }]
+  },
+
+  {
+    "keys": ["b", "b"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "checkout",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "support.text.gitmode.branch.remote"
+    }]
+  },
+
+  /**
+   * `b c` creates a new branch:
+   */
+
+  {
+    "keys": ["b", "c"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "checkout -b ${branch::Branch name}",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
+
+  /**
+   * `b d` deletes the branch:
+   */
+
+  {
+    "keys": ["b", "d"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "branch -d",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "string.text.gitmode.branch.local"
+    }]
+  },
+
+  {
+    "keys": ["b", "D"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "branch -D",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "string.text.gitmode.branch.local"
+    }]
+  },
+
+  /**
+   * `b M` merges a branch:
+   */
+
+  {
+    "keys": ["b", "M"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "merge --no-ff",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "string.text.gitmode.branch.local"
+    }]
+  },
+
+  /**
+   * 'F' create a new feature branch:
+   */
+
+  {
+    "keys": ["!", "f"],
+    "command": "gitmode",
+    "args": {
+      "command": "checkout -b feature/${branch::Feature Branch} develop",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
+
+
+  /**
+   * R E V I S I O N S
+   * =================
+   */
+
+  /**
+   * Pressing '=' shows a diff against HEAD:
+   */
+
+  {
+    "keys": ["="],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "diff",
+      "syntax": "Diff"
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "string.text.gitmode.revision"
+    }]
+  },
+
+  /**
+   * Pressing [ENTER] shows a patch in a new buffer:
+   */
+
+  {
+    "keys": ["enter"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "show --patch",
+      "syntax": "Diff"
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "string.text.gitmode.revision"
+    }]
+  },
+
+  /**
+   * 'a' applies the revision to the working tree, and 'A' applies and commits
+   * it:
+   */
+
+  {
+    "keys": ["a"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "cherry-pick --no-commit",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "string.text.gitmode.revision"
+    }]
+  },
+
+  {
+    "keys": ["A"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "cherry-pick",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "string.text.gitmode.revision"
+    }]
+  },
+
+  /**
+   * 'x' does a soft reset to a particular revision:
+   */
+
+  {
+    "keys": ["x"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "reset --soft",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "string.text.gitmode.revision"
+    }]
+  },
+
+
+  /**
+   * 'X' does a hard reset to a particular revision:
+   */
+
+  {
+    "keys": ["X"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "reset --hard",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "string.text.gitmode.revision"
+    }]
+  },
+
+  /**
+   * S T A S H E S
+   * =============
+   */
+
+  /**
+   * Pressing [ENTER] shows a patch of the stash in a new buffer:
+   */
+
+  {
+    "keys": ["enter"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "stash show --patch",
+      "syntax": "Diff"
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "string.text.gitmode.stash"
+    }]
+  },
+
+  /**
+   * 'a' applies the stash, 'A' pops it and 'k' drops it:
+   */
+
+  {
+    "keys": ["a"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "stash apply",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "string.text.gitmode.stash"
+    }]
+  },
+
+  {
+    "keys": ["A"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "stash pop",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "string.text.gitmode.stash"
+    }]
+  },
+  {
+    "keys": ["ctrl+u", "a"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "stash apply --index",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "string.text.gitmode.stash"
+    }]
+  },
+
+  {
+    "keys": ["ctrl+u", "A"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "stash pop --index",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "string.text.gitmode.stash"
+    }]
+  },
+
+  {
+    "keys": ["k"],
+    "command": "gitmode_on_region",
+    "args": {
+      "command": "stash drop",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "string.text.gitmode.stash"
+    }]
+  }
+]

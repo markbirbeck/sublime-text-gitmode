@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>name</key>
+  <string>GitMode &gt; Status</string>
+
+  <key>patterns</key>
+  <array>
+    <dict>
+      <key>include</key>
+      <string>text.gitmode.branch</string>
+    </dict>
+
+    <dict>
+      <key>include</key>
+      <string>text.gitmode.issue</string>
+    </dict>
+
+    <dict>
+      <key>include</key>
+      <string>text.gitmode.revision</string>
+    </dict>
+
+    <dict>
+      <key>include</key>
+      <string>text.gitmode.stash</string>
+    </dict>
+
+    <dict>
+      <key>comment</key>
+      <string>staged new file</string>
+      <key>match</key>
+      <string>^A. (.*)$</string>
+      <key>name</key>
+      <string>string.text.gitmode.status.file.staged.new</string>
+    </dict>
+
+    <dict>
+      <key>comment</key>
+      <string>staged modified file</string>
+      <key>match</key>
+      <string>^M. (.*)$</string>
+      <key>name</key>
+      <string>string.text.gitmode.status.file.staged.new</string>
+    </dict>
+
+    <dict>
+      <key>comment</key>
+      <string>unstaged untracked file</string>
+      <key>match</key>
+      <string>^\?\? (.*)$</string>
+      <key>name</key>
+      <string>entity.text.gitmode.status.file.unstaged.untracked</string>
+    </dict>
+
+    <dict>
+      <key>comment</key>
+      <string>unstaged deleted file</string>
+      <key>match</key>
+      <string>^.D (.*)$</string>
+      <key>name</key>
+      <string>entity.text.gitmode.status.file.unstaged.deleted</string>
+    </dict>
+
+    <dict>
+      <key>comment</key>
+      <string>unstaged modified file</string>
+      <key>match</key>
+      <string>^.M (.*)$</string>
+      <key>name</key>
+      <string>entity.text.gitmode.status.file.unstaged.modified</string>
+    </dict>
+
+    <dict>
+      <key>comment</key>
+      <string>unstaged unmerged file</string>
+      <key>match</key>
+      <string>^.U (.*)$</string>
+      <key>name</key>
+      <string>entity.text.gitmode.status.file.unstaged.unmerged</string>
+    </dict>
+
+    <!--
+      Untracked files section:
+    -->
+<!--     <dict>
+      <key>comment</key>
+      <string>Untracked files section header</string>
+      <key>match</key>
+      <string>Untracked files:</string>
+      <key>name</key>
+      <string>entity.text.gitmode.section.untracked.header</string>
+    </dict>
+ -->
+    <dict>
+      <key>begin</key>
+      <string>Untracked files:</string>
+      <key>end</key>
+      <string>^$</string>
+      <key>patterns</key>
+      <array>
+        <dict>
+          <key>match</key>
+          <string>(.*)$</string>
+          <key>name</key>
+          <string>entity.text.gitmode.status.file.untracked</string>
+        </dict>
+      </array>
+    </dict>
+
+    <!--
+      Unstaged changes section:
+    -->
+<!--     <dict>
+      <key>comment</key>
+      <string>Unstaged changes section header</string>
+      <key>match</key>
+      <string>Unstaged changes:</string>
+      <key>name</key>
+      <string>entity.text.gitmode.section.unstaged.header</string>
+    </dict>
+ -->
+    <dict>
+      <key>begin</key>
+      <string>Unstaged changes:</string>
+      <key>end</key>
+      <string>^$</string>
+      <key>patterns</key>
+      <array>
+        <dict>
+          <key>match</key>
+          <string>(.*)$</string>
+          <key>name</key>
+          <string>entity.text.gitmode.status.file.unstaged</string>
+        </dict>
+      </array>
+    </dict>
+
+    <!--
+      Staged changes section:
+    -->
+<!--     <dict>
+      <key>comment</key>
+      <string>Staged changes section header</string>
+      <key>match</key>
+      <string>Staged changes:</string>
+      <key>name</key>
+      <string>entity.text.gitmode.section.staged.header</string>
+    </dict>
+ -->
+    <dict>
+      <key>begin</key>
+      <string>Staged changes:</string>
+      <key>end</key>
+      <string>^$</string>
+      <key>patterns</key>
+      <array>
+        <dict>
+          <key>match</key>
+          <string>(.*)$</string>
+          <key>name</key>
+          <string>entity.text.gitmode.status.file.staged</string>
+        </dict>
+      </array>
+    </dict>
+  </array>
+
+  <key>scopeName</key>
+  <string>text.gitmode.status</string>
+  <key>uuid</key>
+  <string>d0f12789-c257-4ed8-b57f-a76c6d637858</string>
+</dict>
+</plist>

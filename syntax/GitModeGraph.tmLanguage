@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>name</key>
+  <string>GitMode &gt; Graph</string>
+
+  <key>patterns</key>
+  <array>
+    <dict>
+      <key>include</key>
+      <string>text.gitmode.branch</string>
+    </dict>
+
+    <dict>
+      <key>include</key>
+      <string>text.gitmode.revision</string>
+    </dict>
+
+    <dict>
+      <key>captures</key>
+      <dict>
+        <key>1</key>
+        <dict>
+          <key>name</key>
+          <string>comment.gitmode.graph</string>
+        </dict>
+        <key>2</key>
+        <dict>
+          <key>name</key>
+          <string>string.gitmode.graph</string>
+        </dict>
+        <key>3</key>
+        <dict>
+          <key>name</key>
+          <string>support.function.gitmode.graph</string>
+        </dict>
+        <key>4</key>
+        <dict>
+          <key>name</key>
+          <string>constant.numeric.gitmode.graph</string>
+        </dict>
+        <key>5</key>
+        <dict>
+          <key>name</key>
+          <string>variable.parameter.gitmode.graph</string>
+        </dict>
+        <key>6</key>
+        <dict>
+          <key>name</key>
+          <string>keyword.gitmode.graph</string>
+        </dict>
+      </dict>
+      <key>match</key>
+      <string>^([| *\\]+)([0-9a-f]{4,40}) -( \(.*?\))? (.*) (\(.*) (&lt;.*&gt;) .*</string>
+      <key>name</key>
+      <string>log-entry.gitmode.graph</string>
+    </dict>
+
+    <dict>
+      <key>comment</key>
+      <string>lines with no commit details</string>
+      <key>match</key>
+      <string>^\|[\|_\/\\ ]+
+?$</string>
+      <key>name</key>
+      <string>comment.gitmode.graph</string>
+    </dict>
+
+    <dict>
+      <key>captures</key>
+      <dict>
+        <key>1</key>
+        <dict>
+          <key>name</key>
+          <string>variable.parameter.gitmode.graph</string>
+        </dict>
+      </dict>
+      <key>match</key>
+      <string>Merge branch '(.*?)' of .*?
+?$</string>
+      <key>name</key>
+      <string>comment.gitmode.graph</string>
+    </dict>
+
+  </array>
+
+  <key>scopeName</key>
+  <string>text.gitmode.graph</string>
+  <key>uuid</key>
+  <string>842f1f7e-a832-4ec8-93c8-c419dcad4227</string>
+</dict>
+</plist>

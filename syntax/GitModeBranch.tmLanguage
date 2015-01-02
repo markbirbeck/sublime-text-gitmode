@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>name</key>
+  <string>GitMode &gt; Branch</string>
+
+  <key>patterns</key>
+  <array>
+    <dict>
+      <key>begin</key>
+      <string>\(</string>
+      <key>end</key>
+      <string>\)</string>
+      <key>patterns</key>
+      <array>
+        <dict>
+          <key>match</key>
+          <string>tag\:\s[^\s\,\)]*</string>
+          <key>name</key>
+          <string>string constant.text.gitmode.branch.tag</string>
+        </dict>
+
+        <dict>
+          <key>match</key>
+          <string>origin/[^\s\,\)]*</string>
+          <key>name</key>
+          <string>support.text.gitmode.branch.remote</string>
+        </dict>
+
+        <dict>
+          <key>match</key>
+          <string>refs/[^\s\,\)]*</string>
+          <key>name</key>
+          <string>keyword.text.gitmode.branch.refs</string>
+        </dict>
+
+        <dict>
+          <key>match</key>
+          <string>HEAD</string>
+          <key>name</key>
+          <string>entity.text.gitmode.branch.local.head</string>
+        </dict>
+
+        <dict>
+          <key>match</key>
+          <string>[^\s\,\)]*</string>
+          <key>name</key>
+          <string>string.text.gitmode.branch.local</string>
+        </dict>
+      </array>
+    </dict>
+  </array>
+
+  <key>scopeName</key>
+  <string>text.gitmode.branch</string>
+  <key>uuid</key>
+  <string>508c4978-19bd-4b1e-9429-a1a3f7db571b</string>
+</dict>
+</plist>
