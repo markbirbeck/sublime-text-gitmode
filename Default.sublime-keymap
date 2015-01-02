@@ -58,4 +58,151 @@
       "operand": "text.gitmode.status"
     }]
   },
+
+  /**
+   * Fetch
+   */
+
+  {
+    "keys": ["f", "f"],
+    "command": "gitmode",
+    "args": {
+      "command": "fetch",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
+
+  {
+    "keys": ["f", "o"],
+    "command": "gitmode",
+    "args": {
+      "command": "fetch ${branch::Branch to fetch}",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
+
+  /**
+   * Pull
+   */
+
+  {
+    "keys": ["F", "F"],
+    "command": "gitmode",
+    "args": {
+      "command": "pull",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
+
+  /**
+   * Push
+   */
+
+  {
+    "keys": ["P", "P"],
+    "command": "gitmode",
+    "args": {
+      "command": "push",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
+
+  {
+    "keys": ["P", "t"],
+    "command": "gitmode",
+    "args": {
+      "command": "push --tags",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
+
+  {
+    "keys": ["ctrl+u", "P", "P"],
+    "command": "gitmode",
+    "args": {
+      "command": "push ${repo::Repository to push to}",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
+
+  {
+    "keys": ["ctrl+u", "P", "t"],
+    "command": "gitmode",
+    "args": {
+      "command": "push --tags ${repo::Repository to push to}",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
+
+  {
+    "keys": ["ctrl+u", "ctrl+u", "P", "P"],
+    "command": "gitmode",
+    "args": {
+      "command": "push ${repo::Repository to push to} ${branch::Branch to push}",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
+
+  {
+    "keys": ["ctrl+u", "ctrl+u", "P", "t"],
+    "command": "gitmode",
+    "args": {
+      "command": "push --tags ${repo::Repository to push to} ${branch::Branch to push}",
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  }
 ]
