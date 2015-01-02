@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>name</key>
+  <string>GitMode &gt; Issue</string>
+
+  <key>patterns</key>
+  <array>
+    <dict>
+      <key>comment</key>
+      <string>issue numbers</string>
+      <key>match</key>
+      <string>(?:[Ff]ix(?:e[ds])?|[Rr]esolve[ds]?|[Cc]lose[ds]?)?\s*(?:#\d+|\[.*?\])</string>
+      <key>name</key>
+      <string>comment.text.gitmode.issue</string>
+    </dict>
+  </array>
+
+  <key>scopeName</key>
+  <string>text.gitmode.issue</string>
+  <key>uuid</key>
+  <string>b8ad84cb-b6df-4e94-9fd0-b3ccfabce3a5</string>
+</dict>
+</plist>

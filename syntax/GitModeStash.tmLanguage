@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>name</key>
+  <string>GitMode &gt; Stash</string>
+
+  <key>patterns</key>
+  <array>
+    <dict>
+      <key>comment</key>
+      <string>stash</string>
+      <key>match</key>
+      <string>stash@\{\d+\}</string>
+      <key>name</key>
+      <string>string.text.gitmode.stash</string>
+    </dict>
+  </array>
+
+  <key>scopeName</key>
+  <string>text.gitmode.stash</string>
+  <key>uuid</key>
+  <string>8af6388b-6e35-4cea-89a9-fdbb4db35d9f</string>
+</dict>
+</plist>
