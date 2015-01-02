@@ -1,0 +1,25 @@
+[
+
+  /**
+   * G E N E R A L
+   * =============
+   */
+
+  /**
+   * ':' allows any Git command to be entered:
+   */
+
+  {
+    "keys": [":"],
+    "command": "gitmode",
+    "args": {
+      "panel": true
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  }
+]
