@@ -21,5 +21,41 @@
       "match_all": true,
       "operand": "text.gitmode.status"
     }]
-  }
+  },
+
+  /**
+   * History
+   */
+
+  {
+    "keys": ["l", "l"],
+    "command": "gitmode",
+    "args": {
+      "command": "log --max-count=100 --graph --decorate --pretty=oneline --abbrev-commit",
+      "title": "*magit-log*",
+      "syntax": "GitModeGraph"
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
+
+  {
+    "keys": ["l", "L"],
+    "command": "gitmode",
+    "args": {
+      "command": "log --max-count=100 --graph --decorate --pretty=oneline --abbrev-commit --all",
+      "title": "*magit-log*",
+      "syntax": "GitModeGraph"
+    },
+    "context": [{
+      "key": "selector",
+      "operator": "equal",
+      "match_all": true,
+      "operand": "text.gitmode.status"
+    }]
+  },
 ]
