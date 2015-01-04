@@ -19,6 +19,12 @@ The main point of interaction for `GitMode` is a generated buffer that contains 
 
 ## Changelog
 
+# 2015-01-04 (v0.1.2)
+
+Add platform-specific blank line command. (Fixes #2.)
+Remove quotes in status commands. (Fixes #3.)
+Disable status command when not in a Git repo. (Closes #4.)
+
 # 2015-01-04 (v0.1.1)
 
 Fix file name for `messages.json`. Fixes issue #1.
