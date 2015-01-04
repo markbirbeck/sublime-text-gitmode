@@ -1,3 +1,19 @@
+# To get a blank line on Linux we do:
+#
+#  echo
+#
+# but the same command on Windows will display the status of the echo
+# command. Instead we have to do:
+#
+#  echo.
+#
+# Unfortunately, that will cause an error on Linux, so there is no way
+# to avoid having OS-specific commands:
+#
+import platform
+
+blank_line = 'echo' + ('.' if platform.system() == 'Windows' else '')
+
 from ShellCommand.ShellCommand import ShellCommandCommand
 import ShellCommand.OsShell as OsShell
 
@@ -27,15 +43,39 @@ class GitmodeCommand(ShellCommandCommand):
                                 syntax=syntax,
                                 refresh=refresh)
 
+    def is_repo(self):
+
+        '''Determine whether we're in a Git repo or not'''
+
+        working_dir = super(GitmodeCommand, self).get_working_dir()
+        in_tree = self.command_to_val('git rev-parse --is-inside-work-tree', working_dir=working_dir)
+
+        return not 'Not a git repository' in in_tree
+
+
+    def is_enabled(self):
+
+        '''Indicate whether ST should allow this command to run or not'''
+
+        return self.is_repo()
+
+
+    def is_visible(self):
+
+        '''Indicate whether ST should show this command on the menu or not'''
+
+        return self.is_enabled()
+
+
     def get_working_dir(self, root_dir=True):
 
         '''Get the Git directory.'''
 
         return self.command_to_val('git rev-parse --show-toplevel')
 
-    def command_to_val(self, command):
+    def command_to_val(self, command, working_dir=None):
 
-        return OsShell.process(command).rstrip('\n')
+        return OsShell.process(command, working_dir=working_dir).rstrip('\n')
 
 
 class GitmodeOnRegionCommand(GitmodeCommand):
@@ -72,26 +112,26 @@ class GitmodeStatusCommand(GitmodeCommand):
         #
         if remote is not '':
             remote_url = self.command_to_val('git config remote.' + remote + '.url')
-            commands.append('echo "Remote: ' + branch + ' @ ' + remote + ' (' + remote_url + ')"')
+            commands.append('echo Remote: ' + branch + ' @ ' + remote + ' (' + remote_url + ')')
 
         # REPOSITORY STATE SECTION:
         #
 
         # Add information about the local branch:
         #
-        commands.append('echo "Local:  ' + branch + '"')
+        commands.append('echo Local:  ' + branch)
 
         # Add the latest commit message:
         #
         commands.extend([
-            'echo',
+            blank_line,
             'git log -n1'
         ])
 
         # Add stash information:
         #
         commands.extend([
-            'echo',
+            blank_line,
             'echo Stashes:',
             'git stash list',
         ])
@@ -102,7 +142,7 @@ class GitmodeStatusCommand(GitmodeCommand):
         # Untracked files:
         #
         commands.extend([
-            'echo',
+            blank_line,
             'echo Untracked files:',
             'git ls-files --other --directory --exclude-standard',
         ])
@@ -110,7 +150,7 @@ class GitmodeStatusCommand(GitmodeCommand):
         # Unstaged changes:
         #
         commands.extend([
-            'echo',
+            blank_line,
             'echo Unstaged changes:',
             'git ls-files --modified --exclude-standard',
         ])
@@ -118,7 +158,7 @@ class GitmodeStatusCommand(GitmodeCommand):
         # Staged changes:
         #
         commands.extend([
-            'echo',
+            blank_line,
             'echo Staged changes:',
             'git diff --name-status --cached',
         ])
@@ -127,10 +167,10 @@ class GitmodeStatusCommand(GitmodeCommand):
         #
         if remote is not '':
             commands.extend([
-                'echo',
+                blank_line,
                 'echo Unpulled commits:',
                 'git log --decorate --pretty=oneline --abbrev-commit ..@{u}',
-                'echo',
+                blank_line,
                 'echo Unpushed commits:',
                 'git log --decorate --pretty=oneline --abbrev-commit @{u}..'
             ])
