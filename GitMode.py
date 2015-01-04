@@ -88,14 +88,14 @@ class GitmodeStatusCommand(GitmodeCommand):
         #
         if remote is not '':
             remote_url = self.command_to_val('git config remote.' + remote + '.url')
-            commands.append('echo "Remote: ' + branch + ' @ ' + remote + ' (' + remote_url + ')"')
+            commands.append('echo Remote: ' + branch + ' @ ' + remote + ' (' + remote_url + ')')
 
         # REPOSITORY STATE SECTION:
         #
 
         # Add information about the local branch:
         #
-        commands.append('echo "Local:  ' + branch + '"')
+        commands.append('echo Local:  ' + branch)
 
         # Add the latest commit message:
         #
