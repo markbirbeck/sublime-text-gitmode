@@ -43,15 +43,39 @@ class GitmodeCommand(ShellCommandCommand):
                                 syntax=syntax,
                                 refresh=refresh)
 
+    def is_repo(self):
+
+        '''Determine whether we're in a Git repo or not'''
+
+        working_dir = super(GitmodeCommand, self).get_working_dir()
+        in_tree = self.command_to_val('git rev-parse --is-inside-work-tree', working_dir=working_dir)
+
+        return not 'Not a git repository' in in_tree
+
+
+    def is_enabled(self):
+
+        '''Indicate whether ST should allow this command to run or not'''
+
+        return self.is_repo()
+
+
+    def is_visible(self):
+
+        '''Indicate whether ST should show this command on the menu or not'''
+
+        return self.is_enabled()
+
+
     def get_working_dir(self, root_dir=True):
 
         '''Get the Git directory.'''
 
         return self.command_to_val('git rev-parse --show-toplevel')
 
-    def command_to_val(self, command):
+    def command_to_val(self, command, working_dir=None):
 
-        return OsShell.process(command).rstrip('\n')
+        return OsShell.process(command, working_dir=working_dir).rstrip('\n')
 
 
 class GitmodeOnRegionCommand(GitmodeCommand):
