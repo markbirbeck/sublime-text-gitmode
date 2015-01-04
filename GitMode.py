@@ -1,3 +1,19 @@
+# To get a blank line on Linux we do:
+#
+#  echo
+#
+# but the same command on Windows will display the status of the echo
+# command. Instead we have to do:
+#
+#  echo.
+#
+# Unfortunately, that will cause an error on Linux, so there is no way
+# to avoid having OS-specific commands:
+#
+import platform
+
+blank_line = 'echo' + ('.' if platform.system() == 'Windows' else '')
+
 from ShellCommand.ShellCommand import ShellCommandCommand
 import ShellCommand.OsShell as OsShell
 
@@ -84,14 +100,14 @@ class GitmodeStatusCommand(GitmodeCommand):
         # Add the latest commit message:
         #
         commands.extend([
-            'echo',
+            blank_line,
             'git log -n1'
         ])
 
         # Add stash information:
         #
         commands.extend([
-            'echo',
+            blank_line,
             'echo Stashes:',
             'git stash list',
         ])
@@ -102,7 +118,7 @@ class GitmodeStatusCommand(GitmodeCommand):
         # Untracked files:
         #
         commands.extend([
-            'echo',
+            blank_line,
             'echo Untracked files:',
             'git ls-files --other --directory --exclude-standard',
         ])
@@ -110,7 +126,7 @@ class GitmodeStatusCommand(GitmodeCommand):
         # Unstaged changes:
         #
         commands.extend([
-            'echo',
+            blank_line,
             'echo Unstaged changes:',
             'git ls-files --modified --exclude-standard',
         ])
@@ -118,7 +134,7 @@ class GitmodeStatusCommand(GitmodeCommand):
         # Staged changes:
         #
         commands.extend([
-            'echo',
+            blank_line,
             'echo Staged changes:',
             'git diff --name-status --cached',
         ])
@@ -127,10 +143,10 @@ class GitmodeStatusCommand(GitmodeCommand):
         #
         if remote is not '':
             commands.extend([
-                'echo',
+                blank_line,
                 'echo Unpulled commits:',
                 'git log --decorate --pretty=oneline --abbrev-commit ..@{u}',
-                'echo',
+                blank_line,
                 'echo Unpushed commits:',
                 'git log --decorate --pretty=oneline --abbrev-commit @{u}..'
             ])
