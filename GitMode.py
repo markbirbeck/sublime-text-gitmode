@@ -71,11 +71,12 @@ class GitmodeCommand(ShellCommandCommand):
 
         '''Get the Git directory.'''
 
-        return self.command_to_val('git rev-parse --show-toplevel')
+        working_dir = super(GitmodeCommand, self).get_working_dir()
+        return self.command_to_val('git rev-parse --show-toplevel', working_dir=working_dir)
 
     def command_to_val(self, command, working_dir=None):
 
-        return OsShell.process(command, working_dir=working_dir).rstrip('\n')
+        return self.run_shell_command_raw(command, None, working_dir=working_dir).rstrip('\n');
 
 
 class GitmodeOnRegionCommand(GitmodeCommand):
