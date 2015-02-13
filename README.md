@@ -6,6 +6,7 @@ This plugin uses [Sublime Text ShellCommand](https://packagecontrol.io/packages/
 # Why?
 
 The [Git](https://packagecontrol.io/packages/Git) plugin is great, but:
+
 * it relies on a great deal of code for its functionality, yet a lot of this functionality is boiler-plate and could be easily factored out; `GitMode` uses `ShellCommand` which is a factoring of this kind of boilerplate code, plus a few other features;
 * relying on code for functionality, rather than configuration, makes it difficult to contribute to and to customise. This is especially frustrating for small features;
 * the `Git` plugin uses slightly different terminology to Git itself, which seems unnecessary.
@@ -18,6 +19,10 @@ The main point of interaction for `GitMode` is a generated buffer that contains 
 ![Screenshot of the GitMode status command](https://www.evernote.com/shard/s21/sh/092a14bd-da06-4649-943e-9b54add6917f/b68858b2d9da3a4983e6da08237231cb/deep/0/*GitMode-status*---shell-command.png)
 
 ## Changelog
+
+# 2015-02-13 (v0.2.1)
+
+Add missing blank line to README to ensure list shows correctly.
 
 # 2015-02-13 (v0.2.0)
 
