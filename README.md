@@ -19,6 +19,12 @@ The main point of interaction for `GitMode` is a generated buffer that contains 
 
 ## Changelog
 
+# 2015-02-13 (v0.2.0)
+
+Locating repo directory needs to use proper working directory. (Fixes #5.)
+Add references to settings files on menus. (Closes #11.)
+Status command is failing due to incorrect 'echo' syntax. (Fixes #10.)
+
 # 2015-01-04 (v0.1.2)
 
 Add platform-specific blank line command. (Fixes #2.)
