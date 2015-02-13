@@ -71,11 +71,12 @@ class GitmodeCommand(ShellCommandCommand):
 
         '''Get the Git directory.'''
 
-        return self.command_to_val('git rev-parse --show-toplevel')
+        working_dir = super(GitmodeCommand, self).get_working_dir()
+        return self.command_to_val('git rev-parse --show-toplevel', working_dir=working_dir)
 
     def command_to_val(self, command, working_dir=None):
 
-        return OsShell.process(command, working_dir=working_dir).rstrip('\n')
+        return self.run_shell_command_raw(command, None, working_dir=working_dir).rstrip('\n');
 
 
 class GitmodeOnRegionCommand(GitmodeCommand):
@@ -112,14 +113,14 @@ class GitmodeStatusCommand(GitmodeCommand):
         #
         if remote is not '':
             remote_url = self.command_to_val('git config remote.' + remote + '.url')
-            commands.append('echo Remote: ' + branch + ' @ ' + remote + ' (' + remote_url + ')')
+            commands.append('echo "Remote: ' + branch + ' @ ' + remote + ' (' + remote_url + ')"')
 
         # REPOSITORY STATE SECTION:
         #
 
         # Add information about the local branch:
         #
-        commands.append('echo Local:  ' + branch)
+        commands.append('echo "Local:  ' + branch + '"')
 
         # Add the latest commit message:
         #
@@ -132,7 +133,7 @@ class GitmodeStatusCommand(GitmodeCommand):
         #
         commands.extend([
             blank_line,
-            'echo Stashes:',
+            'echo "Stashes:"',
             'git stash list',
         ])
 
@@ -143,7 +144,7 @@ class GitmodeStatusCommand(GitmodeCommand):
         #
         commands.extend([
             blank_line,
-            'echo Untracked files:',
+            'echo "Untracked files:"',
             'git ls-files --other --directory --exclude-standard',
         ])
 
@@ -151,7 +152,7 @@ class GitmodeStatusCommand(GitmodeCommand):
         #
         commands.extend([
             blank_line,
-            'echo Unstaged changes:',
+            'echo "Unstaged changes:"',
             'git ls-files --modified --exclude-standard',
         ])
 
@@ -159,7 +160,7 @@ class GitmodeStatusCommand(GitmodeCommand):
         #
         commands.extend([
             blank_line,
-            'echo Staged changes:',
+            'echo "Staged changes:"',
             'git diff --name-status --cached',
         ])
 
@@ -168,10 +169,10 @@ class GitmodeStatusCommand(GitmodeCommand):
         if remote is not '':
             commands.extend([
                 blank_line,
-                'echo Unpulled commits:',
+                'echo "Unpulled commits:"',
                 'git log --decorate --pretty=oneline --abbrev-commit ..@{u}',
                 blank_line,
-                'echo Unpushed commits:',
+                'echo "Unpushed commits:"',
                 'git log --decorate --pretty=oneline --abbrev-commit @{u}..'
             ])
 
