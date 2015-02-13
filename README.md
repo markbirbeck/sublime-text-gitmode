@@ -6,6 +6,7 @@ This plugin uses [Sublime Text ShellCommand](https://packagecontrol.io/packages/
 # Why?
 
 The [Git](https://packagecontrol.io/packages/Git) plugin is great, but:
+
 * it relies on a great deal of code for its functionality, yet a lot of this functionality is boiler-plate and could be easily factored out; `GitMode` uses `ShellCommand` which is a factoring of this kind of boilerplate code, plus a few other features;
 * relying on code for functionality, rather than configuration, makes it difficult to contribute to and to customise. This is especially frustrating for small features;
 * the `Git` plugin uses slightly different terminology to Git itself, which seems unnecessary.
