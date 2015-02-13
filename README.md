@@ -20,6 +20,10 @@ The main point of interaction for `GitMode` is a generated buffer that contains 
 
 ## Changelog
 
+# 2015-02-13 (v0.2.1)
+
+Add missing blank line to README to ensure list shows correctly.
+
 # 2015-02-13 (v0.2.0)
 
 Locating repo directory needs to use proper working directory. (Fixes #5.)

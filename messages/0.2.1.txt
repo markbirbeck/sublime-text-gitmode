@@ -1,0 +1,3 @@
+Version 0.2.1 Release Notes
+
+Minor whitespace changes to ensure README is laid out correctly on package manager.
